@@ -135,6 +135,7 @@ Page resource error:
           );
         },
       )
+      // ..setUserAgent('CUSTOM USER AGENT: HERE')
       ..loadRequest(Uri.parse('https://flutter.dev'));
 
     // #docregion platform_features

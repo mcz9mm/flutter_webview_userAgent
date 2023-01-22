@@ -124,14 +124,14 @@ class SampleMenu extends StatelessWidget {
   }
 
   Future<void> _onShowUserAgent() async {
-    // Send a message with the user agent string to the Toaster JavaScript channel we registered
-    // with the WebView.
     final String userAgent = await webViewController
         .runJavaScriptReturningResult('navigator.userAgent') as String;
+    const String customUserAgent = 'CUSTOM USER AGENT: HERE';
+    await webViewController.setUserAgent('$userAgent , $customUserAgent');
     debugPrint(userAgent);
 
     return webViewController.runJavaScript(
-      'Toaster.postMessage("User Agent: " + navigator.userAgent);',
+      'Toaster.postMessage(navigator.userAgent);',
     );
   }
 
